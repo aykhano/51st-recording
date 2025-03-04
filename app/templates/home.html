@@ -1,0 +1,41 @@
+
+
+{% block content %}
+<div class="container" style="max-width: 600px; margin: auto;">
+    <h2 style="text-align: center;">Todo List</h2>
+    
+    <!-- Yeni Task əlavə etmək üçün forma -->
+    <form method="POST" action="/create-new-task/" style="display: flex; gap: 10px; margin-bottom: 20px;">
+        {% csrf_token %}
+        <input type="text" name="task_title" placeholder="Yazginən" required style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+        <button type="submit" style="padding: 8px 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">Basginən</button>
+    </form>
+    <form method="POST" action="/create-new-task/" style="display: flex; gap: 10px; margin-bottom: 20px;">
+        {% csrf_token %}
+        <input type="text" name="task_title" placeholder="Yazginən" required style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+        <button type="submit" style="padding: 8px 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">Basginən</button>
+    </form>
+    <form method="POST" action="/create-new-task/" style="display: flex; gap: 10px; margin-bottom: 20px;">
+        {% csrf_token %}
+        <input type="text" name="task_title" placeholder="Yazginən" required style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+        <button type="submit" style="padding: 8px 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">Basginən</button>
+    </form>
+    
+    <!-- Task siyahısı -->
+    <div>
+        {% for task in task_list %}
+        <div style="display: flex; justify-content: space-between; align-items: center; background: #f9f9f9; padding: 10px; border-radius: 5px; margin-bottom: 10px; border: 1px solid #ddd;">
+            <span>{{ task.title }}</span>
+            <span>{{ task.created_at }}</span>
+            <span>{{ task.updated_at }}</span>
+            <div>
+                <a href="/complete/{{ task.id }}/" style="padding: 3px 8px; background: #007bff; color: white; text-decoration: none; border-radius: 5px;">Complete</a>
+                <a href="/delete/{{ task.id }}/" style="padding: 3px 8px; background: #dc3545; color: white; text-decoration: none; border-radius: 5px; margin-left: 5px;">Delete</a>
+            </div>
+        </div>
+        {% empty %}
+        <p style="text-align: center; color: #888;">No tasks available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
