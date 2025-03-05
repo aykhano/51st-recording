@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Task, ToDoList
+from django.urls import reverse
 
 
 def home_page(request):
@@ -18,7 +19,10 @@ def create_new_tasks(request):
         todo_list = todo_list,
         title = task,
     )
-    return redirect("http://127.0.0.1:8000/")
+    return redirect(reverse("app:index"))
+
+def complete_task(request):
+    ...
 
 
 

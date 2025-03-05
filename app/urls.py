@@ -13,7 +13,10 @@ urlpatterns = [
         "create-new-task/",
         views.create_new_tasks,
         name="create-new-task"
+    ),
+    path(
+        "complete-task",
+        views.complete_task,
+        name="complete-task"
     )
 ]
-
-

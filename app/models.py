@@ -11,6 +11,8 @@ class Task(models.Model):
         blank=True,
     )
 
+    is_completed = models.BooleanField(default=False)
+
     def __str__(self):
         return f"Task {self.title}"
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
